@@ -1,7 +1,7 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-from Telepolis import Session, Terminal
+from Terminal import Session, Terminal  # , TerminalStage
 
 session = Session()
 
@@ -40,11 +40,15 @@ for vendorCatalog in vendorsBs.find_all('div', {'class': 'brand-box__inner'}):
 
             bs = BeautifulSoup(phoneSpec.text, 'html.parser')
 
-            print(' '.join(
-                bs.find('div', {'id': 'PhoneModelName'}).find('h1').text.strip().split(' ')[:-2]
-            ), terminal_id)
+            print(phoneUrl)
 
-            time.sleep(20)
+            t1 = Terminal(phoneUrl, terminal_id, bs)
+
+            if t1.release_date and t1.release_date >= '2016Q1':
+                session.add(t1)
+                session.commit()
+
+            time.sleep(45)
 
             terminal_id += 1
 
