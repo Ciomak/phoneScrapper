@@ -7,44 +7,18 @@ import re
 # mgsm_terminals
 # mgsm_terminals_stage
 
-engine = create_engine('postgresql+psycopg2://kciomc03:rexmil@localhost:5432/terminals', echo=True)
+engine = create_engine(
+    'postgresql+psycopg2://postgres:rexmil@localhost:5432/terminals',
+    echo=True
+    )
 Base = declarative_base(bind=engine)
 Session = sessionmaker(bind=engine)
-
-
-class TerminalStage(Base):
-    __tablename__ = 'mgsm_stage'
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    terminal_id = Column(Integer)
-    url = Column(String(500))
-    terminal_name = Column(String(250))
-    attribute_section = Column(String(250))
-    attribute_name = Column(String(250))
-    attribute_value = Column(String(10000))
-
-    def __init__(self, url, terminal_id, bs):
-        self.url = url
-        self.terminal_id = terminal_id
-        self.bs = bs
-
-    def setTerminalName(self):
-        pass
-
-    def setTerminalSection(self):
-        pass
-
-    def setAttributeName(self):
-        pass
-
-    def setAttributeValue(self):
-        pass
 
 
 class Terminal(Base):
     __tablename__ = 'mgsm'
 
-    terminal_id = Column(Integer, primary_key=True, autoincrement=False)
+    terminal_id = Column(Integer, primary_key=True, autoincrement=True)
     url = Column(String(500))
     terminal_vendor = Column(String(50))
     terminal_name = Column(String(250))
@@ -108,9 +82,8 @@ class Terminal(Base):
     phone_jack = Column(Boolean)
     phone_kind = Column(String(50))
 
-    def __init__(self, url, terminal_id, bs):
+    def __init__(self, url, bs):
         self.url = url
-        self.terminal_id = terminal_id
         self.bs = bs
         self.initClass()
 
@@ -160,36 +133,50 @@ class Terminal(Base):
         if value:
             if re.search(ratio, value.text):
                 try:
-                    self.main_screen_ratio = float(re.search(ratio, value.text).group('ratio'))
+                    self.main_screen_ratio = float(re.search(
+                        ratio, value.text
+                        ).group('ratio'))
                 except:  # noqa E722
                     self.main_screen_ratio = None
 
             if re.search(ppi, value.text):
                 try:
-                    self.main_screen_ppi = int(re.search(ppi, value.text).group('ppi'))
+                    self.main_screen_ppi = int(re.search(
+                        ppi, value.text
+                        ).group('ppi'))
                 except:  # noqa E722
                     self.main_screen_ppi = None
 
             if re.search(colors, value.text):
                 try:
                     if re.search(colors, value.text).group('sep') == 'k':
-                        self.main_screen_colors = float(int(re.search(colors, value.text).group('num')/1000))
+                        self.main_screen_colors = float(int(re.search(
+                            colors, value.text
+                            ).group('num')/1000))
                     else:
-                        self.main_screen_colors = float(re.search(colors, value.text).group('num'))
+                        self.main_screen_colors = float(re.search(
+                            colors, value.text
+                            ).group('num'))
                 except:  # noqa E722
                     self.main_screen_colors = None
 
             if re.search(res, value.text):
                 try:
-                    self.main_screen_res_x = int(re.search(res, value.text).group('x'))
-                    self.main_screen_res_y = int(re.search(res, value.text).group('y'))
+                    self.main_screen_res_x = int(re.search(
+                        res, value.text
+                        ).group('x'))
+                    self.main_screen_res_y = int(re.search(
+                        res, value.text
+                        ).group('y'))
                 except:  # noqa E722
                     self.main_screen_res_x = None
                     self.main_screen_res_y = None
 
             if re.search(size, value.text):
                 try:
-                    self.main_screen_size = float(re.search(size, value.text).group('size'))
+                    self.main_screen_size = float(re.search(
+                        size, value.text
+                        ).group('size'))
                 except:  # noqa E722
                     self.main_screen_size = None
         else:
@@ -361,13 +348,17 @@ class Terminal(Base):
             for descendant in value.descendants:
                 if str(descendant).startswith('Zegar procesora'):
                     try:
-                        self.processor_speed = float(str(descendant).split(':')[-1].split()[0])
+                        self.processor_speed = float(
+                            str(descendant).split(':')[-1].split()[0]
+                            )
                     except:  # noqa E722
                         self.processor_speed = None
 
                 if str(descendant).startswith('Liczba rdzeni'):
                     try:
-                        self.processor_cores = int(str(descendant).split(':')[-1].split()[0])
+                        self.processor_cores = int(
+                            str(descendant).split(':')[-1].split()[0]
+                            )
                     except:  # noqa E722
                         self.processor_cores = None
 
@@ -433,18 +424,24 @@ class Terminal(Base):
 
         if value:
             for v in value:
-                if v.find_previous('h2', {'class': 'phone_card__panel-header-title'}).text\
+                if v.find_previous(
+                    'h2',
+                    {'class': 'phone_card__panel-header-title'}).text\
                      == 'APARAT FOTOGRAFICZNY - TYŁ':
                     if v.text == 'Pierwszy aparat':
                         for d in v.find_next('ul').descendants:
-                            for p in d.find_next_siblings('div', {'class': 'phoneCategoryName'}):
+                            for p in d.find_next_siblings(
+                                'div', {'class': 'phoneCategoryName'}
+                            ):
                                 if p.text.strip() == 'Matryca':
                                     phoneCategoryValue = p.find_next_sibling(
                                             'div',
                                             {'class', 'phoneCategoryValue'}
                                         )
                                     try:
-                                        self.rear_first_camera_matrix = int(phoneCategoryValue.text.split()[0])
+                                        self.rear_first_camera_matrix = int(
+                                            phoneCategoryValue.text.split()[0]
+                                            )
                                     except:  # noqa E722
                                         self.rear_first_camera_matrix = None
 
@@ -457,12 +454,17 @@ class Terminal(Base):
                                         img = phoneCategoryValue.find('span')
                                         if img:
                                             if 'cross' in img['class']:
-                                                self.rear_first_camera_flash = False
+                                                self.rear_first_camera_flash =\
+                                                    False
                                             elif 'tick' in img['class']:
-                                                self.rear_first_camera_flash = True
+                                                self.rear_first_camera_flash =\
+                                                    True
                                             elif 'question' in img['class']:
-                                                self.rear_first_camera_flash = None
-                                        elif len(phoneCategoryValue.text.strip()) > 0:
+                                                self.rear_first_camera_flash =\
+                                                    None
+                                        elif len(
+                                            phoneCategoryValue.text.strip()
+                                             ) > 0:
                                             self.rear_first_camera_flash = True
                                         else:
                                             self.rear_first_camera_flash = None
@@ -476,14 +478,13 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_first_camera_optical_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_first_camera_optical_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_first_camera_optical_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_first_camera_optical_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_first_camera_optical_zoom = None
+                                        self.rear_first_camera_optical_zoom =\
+                                            None
 
                                 if p.text.strip() == 'Zoom cyfrowy':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -492,24 +493,27 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_first_camera_digital_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_first_camera_digital_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_first_camera_digital_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_first_camera_digital_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_first_camera_digital_zoom = None
+                                        self.rear_first_camera_digital_zoom =\
+                                            None
                     elif v.text == 'Drugi aparat':
                         for d in v.find_next('ul').descendants:
-                            for p in d.find_next_siblings('div', {'class': 'phoneCategoryName'}):
+                            for p in d.find_next_siblings(
+                                'div', {'class': 'phoneCategoryName'}
+                            ):
                                 if p.text.strip() == 'Matryca':
                                     phoneCategoryValue = p.find_next_sibling(
                                             'div',
                                             {'class', 'phoneCategoryValue'}
                                         )
                                     try:
-                                        self.rear_second_camera_matrix = int(phoneCategoryValue.text.split()[0])
+                                        self.rear_second_camera_matrix = int(
+                                            phoneCategoryValue.text.split()[0]
+                                            )
                                     except:  # noqa E722
                                         self.rear_second_camera_matrix = None
 
@@ -521,18 +525,21 @@ class Terminal(Base):
                                     try:
                                         img = phoneCategoryValue.find('span')
                                         if img:
-                                            if 'cross' in img['class']:
-                                                self.rear_second_camera_flash = False
-                                            elif 'tick' in img['class']:
-                                                self.rear_second_camera_flash = True
-                                            elif 'question' in img['class']:
-                                                self.rear_second_camera_flash = None
-                                        elif len(phoneCategoryValue.text.strip()) > 0:
-                                            self.rear_second_camera_flash = True
+                                            self.crossTickNone(
+                                                img,
+                                                'rear_second_camera_flash'
+                                                )
+                                        elif len(
+                                            phoneCategoryValue.text.strip()
+                                             ) > 0:
+                                            self.rear_second_camera_flash =\
+                                                True
                                         else:
-                                            self.rear_second_camera_flash = None
+                                            self.rear_second_camera_flash =\
+                                                None
                                     except:  # noqa E722
-                                        self.rear_second_camera_flash = None
+                                        self.rear_second_camera_flash =\
+                                            None
 
                                 if p.text.strip() == 'Zoom optyczny':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -541,14 +548,13 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_second_camera_optical_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_second_camera_optical_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_second_camera_optical_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_second_camera_optical_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_second_camera_optical_zoom = None
+                                        self.rear_second_camera_optical_zoom =\
+                                            None
 
                                 if p.text.strip() == 'Zoom cyfrowy':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -557,24 +563,27 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_second_camera_digital_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_second_camera_digital_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_second_camera_digital_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_second_camera_digital_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_second_camera_digital_zoom = None
+                                        self.rear_second_camera_digital_zoom =\
+                                            None
                     elif v.text == 'Trzeci aparat':
                         for d in v.find_next('ul').descendants:
-                            for p in d.find_next_siblings('div', {'class': 'phoneCategoryName'}):
+                            for p in d.find_next_siblings(
+                                'div', {'class': 'phoneCategoryName'}
+                            ):
                                 if p.text.strip() == 'Matryca':
                                     phoneCategoryValue = p.find_next_sibling(
                                             'div',
                                             {'class', 'phoneCategoryValue'}
                                         )
                                     try:
-                                        self.rear_third_camera_matrix = int(phoneCategoryValue.text.split()[0])
+                                        self.rear_third_camera_matrix = int(
+                                            phoneCategoryValue.text.split()[0]
+                                            )
                                     except:  # noqa E722
                                         self.rear_third_camera_matrix = None
 
@@ -586,13 +595,13 @@ class Terminal(Base):
                                     try:
                                         img = phoneCategoryValue.find('span')
                                         if img:
-                                            if 'cross' in img['class']:
-                                                self.rear_third_camera_flash = False
-                                            elif 'tick' in img['class']:
-                                                self.rear_third_camera_flash = True
-                                            elif 'question' in img['class']:
-                                                self.rear_third_camera_flash = None
-                                        elif len(phoneCategoryValue.text.strip()) > 0:
+                                            self.crossTickNone(
+                                                img,
+                                                'rear_third_camera_flash'
+                                                )
+                                        elif len(
+                                            phoneCategoryValue.text.strip()
+                                             ) > 0:
                                             self.rear_third_camera_flash = True
                                         else:
                                             self.rear_third_camera_flash = None
@@ -606,14 +615,13 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_third_camera_optical_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_third_camera_optical_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_third_camera_optical_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_third_camera_optical_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_third_camera_optical_zoom = None
+                                        self.rear_third_camera_optical_zoom =\
+                                            None
 
                                 if p.text.strip() == 'Zoom cyfrowy':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -622,24 +630,27 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_third_camera_digital_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_third_camera_digital_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_third_camera_digital_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_third_camera_digital_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_third_camera_digital_zoom = None
+                                        self.rear_third_camera_digital_zoom =\
+                                            None
                     elif v.text == 'Czwarty aparat':
                         for d in v.find_next('ul').descendants:
-                            for p in d.find_next_siblings('div', {'class': 'phoneCategoryName'}):
+                            for p in d.find_next_siblings(
+                                'div', {'class': 'phoneCategoryName'}
+                            ):
                                 if p.text.strip() == 'Matryca':
                                     phoneCategoryValue = p.find_next_sibling(
                                             'div',
                                             {'class', 'phoneCategoryValue'}
                                         )
                                     try:
-                                        self.rear_fourth_camera_matrix = int(phoneCategoryValue.text.split()[0])
+                                        self.rear_fourth_camera_matrix = int(
+                                            phoneCategoryValue.text.split()[0]
+                                            )
                                     except:  # noqa E722
                                         self.rear_fourth_camera_matrix = None
 
@@ -651,18 +662,21 @@ class Terminal(Base):
                                     try:
                                         img = phoneCategoryValue.find('span')
                                         if img:
-                                            if 'cross' in img['class']:
-                                                self.rear_fourth_camera_flash = False
-                                            elif 'tick' in img['class']:
-                                                self.rear_fourth_camera_flash = True
-                                            elif 'question' in img['class']:
-                                                self.rear_fourth_camera_flash = None
-                                        elif len(phoneCategoryValue.text.strip()) > 0:
-                                            self.rear_fourth_camera_flash = True
+                                            self.crossTickNone(
+                                                img,
+                                                'rear_fourth_camera_flash'
+                                                )
+                                        elif len(
+                                            phoneCategoryValue.text.strip()
+                                             ) > 0:
+                                            self.rear_fourth_camera_flash\
+                                                = True
                                         else:
-                                            self.rear_fourth_camera_flash = None
+                                            self.rear_fourth_camera_flash\
+                                                = None
                                     except:  # noqa E722
-                                        self.rear_fourth_camera_flash = None
+                                        self.rear_fourth_camera_flash\
+                                            = None
 
                                 if p.text.strip() == 'Zoom optyczny':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -671,14 +685,13 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_fourth_camera_optical_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_fourth_camera_optical_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_fourth_camera_optical_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_fourth_camera_optical_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_fourth_camera_optical_zoom = None
+                                        self.rear_fourth_camera_optical_zoom\
+                                            = None
 
                                 if p.text.strip() == 'Zoom cyfrowy':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -687,32 +700,37 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.rear_fourth_camera_digital_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.rear_fourth_camera_digital_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.rear_fourth_camera_digital_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'rear_fourth_camera_digital_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.rear_fourth_camera_digital_zoom = None
+                                        self.rear_fourth_camera_digital_zoom =\
+                                            None
 
     def setFrontCamera(self):
         value = self.bs.find_all('div', {'class': 'foto-enumerate'})
 
         if value:
             for v in value:
-                if v.find_previous('h2', {'class': 'phone_card__panel-header-title'}).text\
+                if v.find_previous(
+                    'h2', {'class': 'phone_card__panel-header-title'}
+                    ).text\
                      == 'APARAT FOTOGRAFICZNY - PRZÓD':
                     if v.text == 'Pierwszy aparat':
                         for d in v.find_next('ul').descendants:
-                            for p in d.find_next_siblings('div', {'class': 'phoneCategoryName'}):
+                            for p in d.find_next_siblings(
+                                'div', {'class': 'phoneCategoryName'}
+                            ):
                                 if p.text.strip() == 'Matryca':
                                     phoneCategoryValue = p.find_next_sibling(
                                             'div',
                                             {'class', 'phoneCategoryValue'}
                                         )
                                     try:
-                                        self.front_first_camera_matrix = int(phoneCategoryValue.text.split()[0])
+                                        self.front_first_camera_matrix = int(
+                                            phoneCategoryValue.text.split()[0]
+                                            )
                                     except:  # noqa E722
                                         self.front_first_camera_matrix = None
 
@@ -724,16 +742,18 @@ class Terminal(Base):
                                     try:
                                         img = phoneCategoryValue.find('span')
                                         if img:
-                                            if 'cross' in img['class']:
-                                                self.front_first_camera_flash = False
-                                            elif 'tick' in img['class']:
-                                                self.front_first_camera_flash = True
-                                            elif 'question' in img['class']:
-                                                self.front_first_camera_flash = None
-                                        elif len(phoneCategoryValue.text.strip()) > 0:
-                                            self.front_first_camera_flash = True
+                                            self.crossTickNone(
+                                                img,
+                                                'front_first_camera_flash'
+                                                )
+                                        elif len(
+                                            phoneCategoryValue.text.strip()
+                                             ) > 0:
+                                            self.front_first_camera_flash =\
+                                                True
                                         else:
-                                            self.front_first_camera_flash = None
+                                            self.front_first_camera_flash =\
+                                                None
                                     except:  # noqa E722
                                         self.front_first_camera_flash = None
 
@@ -744,14 +764,13 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.front_first_camera_optical_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.front_first_camera_optical_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.front_first_camera_optical_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'front_first_camera_optical_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.front_first_camera_optical_zoom = None
+                                        self.front_first_camera_optical_zoom\
+                                            = None
 
                                 if p.text.strip() == 'Zoom cyfrowy':
                                     phoneCategoryValue = p.find_next_sibling(
@@ -760,14 +779,13 @@ class Terminal(Base):
                                         )
                                     try:
                                         img = phoneCategoryValue.find('span')
-                                        if 'cross' in img['class']:
-                                            self.front_first_camera_digital_zoom = False
-                                        elif 'tick' in img['class']:
-                                            self.front_first_camera_digital_zoom = True
-                                        elif 'question' in img['class']:
-                                            self.front_first_camera_digital_zoom = None
+                                        self.crossTickNone(
+                                            img,
+                                            'front_first_camera_digital_zoom'
+                                            )
                                     except:  # noqa E722
-                                        self.front_first_camera_digital_zoom = None
+                                        self.front_first_camera_digital_zoom =\
+                                            None
                     elif v.text == 'Drugi aparat':
                         pass
                         # for d in v.find_next('ul').descendants:
@@ -798,12 +816,7 @@ class Terminal(Base):
         if value:
             try:
                 img = value.find('span')
-                if 'cross' in img['class']:
-                    self.finger_print_scanner = False
-                elif 'tick' in img['class']:
-                    self.finger_print_scanner = True
-                elif 'question' in img['class']:
-                    self.finger_print_scanner = None
+                self.crossTickNone(img, 'finger_print_scanner')
             except:  # noqa E722
                 self.finger_print_scanner = None
         else:
@@ -814,12 +827,7 @@ class Terminal(Base):
         if value:
             try:
                 img = value.find('span')
-                if 'cross' in img['class']:
-                    self.bluetooth = False
-                elif 'tick' in img['class']:
-                    self.bluetooth = True
-                elif 'question' in img['class']:
-                    self.bluetooth = None
+                self.crossTickNone(img, 'bluetooth')
             except:  # noqa E722
                 self.bluetooth = None
         else:
@@ -830,12 +838,7 @@ class Terminal(Base):
         if value:
             try:
                 img = value.find('span')
-                if 'cross' in img['class']:
-                    self.wifi = False
-                elif 'tick' in img['class']:
-                    self.wifi = True
-                elif 'question' in img['class']:
-                    self.wifi = None
+                self.crossTickNone(img, 'wifi')
             except:  # noqa E722
                 self.wifi = None
         else:
@@ -869,12 +872,7 @@ class Terminal(Base):
             else:
                 try:
                     img = value.find('span')
-                    if 'cross' in img['class']:
-                        self.nfc = False
-                    elif 'tick' in img['class']:
-                        self.nfc = True
-                    elif 'question' in img['class']:
-                        self.nfc = None
+                    self.crossTickNone(img, 'nfc')
                 except:  # noqa E722
                     self.nfc = None
         else:
@@ -885,7 +883,9 @@ class Terminal(Base):
 
         if value:
             try:
-                self.user_score = float(value.text.strip().split()[-1].replace(',', '.'))
+                self.user_score = float(
+                    value.text.strip().split()[-1].replace(',', '.')
+                    )
             except:  # noqa E722
                 self.user_score = None
         else:
@@ -899,7 +899,9 @@ class Terminal(Base):
                 sp = score.text.split()
                 if sp[0] == 'Design':
                     try:
-                        self.user_design_score = float(sp[1].strip().replace(',', '.'))
+                        self.user_design_score = float(
+                            sp[1].strip().replace(',', '.')
+                            )
                     except:  # noqa E722
                         self.user_design_score = None
         else:
@@ -913,7 +915,9 @@ class Terminal(Base):
                 sp = score.text.split()
                 if sp[0] == 'Możliwości':
                     try:
-                        self.user_capabilities_score = float(sp[1].strip().replace(',', '.'))
+                        self.user_capabilities_score = float(
+                            sp[1].strip().replace(',', '.')
+                            )
                     except:  # noqa E722
                         self.user_capabilities_score = None
         else:
@@ -959,12 +963,7 @@ class Terminal(Base):
             else:
                 try:
                     img = value.find('span')
-                    if 'cross' in img['class']:
-                        self.phone_jack = False
-                    elif 'tick' in img['class']:
-                        self.phone_jack = True
-                    elif 'question' in img['class']:
-                        self.phone_jack = None
+                    self.crossTickNone(img, 'phone_jack')
                 except:  # noqa E722
                     self.phone_jack = None
         else:
@@ -975,10 +974,20 @@ class Terminal(Base):
         if category:
             parents = [x.parent for x in category]
             for parent in parents:
-                for sibling in parent.find_next_siblings('div', {'class': 'phoneCategoryValue'}):
+                for sibling in parent.find_next_siblings(
+                    'div', {'class': 'phoneCategoryValue'}
+                ):
                     return sibling
 
         return None
+
+    def crossTickNone(self, img, attr):
+        if 'cross' in img['class']:
+            setattr(self, attr, False)
+        elif 'tick' in img['class']:
+            setattr(self, attr, True)
+        elif 'question' in img['class']:
+            setattr(self, attr, None)
 
 
 def createTables():
