@@ -8,8 +8,8 @@ import re
 # mgsm_terminals_stage
 
 engine = create_engine(
-    'postgresql+psycopg2://postgres:rexmil@localhost:5432/terminals',
-    echo=True
+    'postgresql+psycopg2://kciomc03:rexmil@localhost:5432/terminals',
+    echo=False
     )
 Base = declarative_base(bind=engine)
 Session = sessionmaker(bind=engine)

@@ -1,0 +1,120 @@
+Vendor Url https://www.mgsm.pl/pl/katalog/samsung/
+Vendor Response 200
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya70/Samsung-Galaxy-A70.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya40dualsim/Samsung-Galaxy-A40-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya40/Samsung-Galaxy-A40.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya20/Samsung-Galaxy-A20.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxym30/Samsung-Galaxy-M30.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys105g/Samsung-Galaxy-S10-5G.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys10edualsim/Samsung-Galaxy-S10e-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys10plusdualsim/Samsung-Galaxy-S10plus-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys10dualsim/Samsung-Galaxy-S10-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys10e/Samsung-Galaxy-S10e.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys10plus/Samsung-Galaxy-S10plus.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyfold/Samsung-Galaxy-Fold.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxys10/Samsung-Galaxy-S10.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxytabs5ewifi/Samsung-Galaxy-Tab-S5e-WiFi.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxytabs5e/Samsung-Galaxy-Tab-S5e.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya10/Samsung-Galaxy-A10.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya50/Samsung-Galaxy-A50.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya30/Samsung-Galaxy-A30.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj2pure/Samsung-Galaxy-J2-Pure.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxym20/Samsung-Galaxy-M20.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxym10/Samsung-Galaxy-M10.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya9pro2019/Samsung-Galaxy-A9-Pro-2019.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya8s/Samsung-Galaxy-A8s.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj7v/Samsung-Galaxy-J7-V.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj3aura/Samsung-Galaxy-J3-Aura.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/w2019/Samsung-W2019.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj4core/Samsung-Galaxy-J4-Core.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya6s/Samsung-Galaxy-A6s.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya9s/Samsung-Galaxy-A9s.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya9/Samsung-Galaxy-A9.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya72018/Samsung-Galaxy-A7-2018.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj6plusdualsim/Samsung-Galaxy-J6plus-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj4plusdualsim/Samsung-Galaxy-J4plus-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj2core/Samsung-Galaxy-J2-Core.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxytabs4wifi/Samsung-Galaxy-Tab-S4-WiFi.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxytabs4/Samsung-Galaxy-Tab-S4.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxytaba10.5wifi/Samsung-Galaxy-Tab-A-10.5-WiFi.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxytaba10.5/Samsung-Galaxy-Tab-A-10.5.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyon82018dualsim/Samsung-Galaxy-On8-2018-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxynote9smn960u/Samsung-Galaxy-Note-9-SM-N960U.html
+Vendor Url https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Vendor Response 200
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxynote9dualsim/Samsung-Galaxy-Note-9-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxynote9/Samsung-Galaxy-Note-9.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj7refine/Samsung-Galaxy-J7-Refine.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj7star/Samsung-Galaxy-J7-Star.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyon6/Samsung-Galaxy-On6.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj3star/Samsung-Galaxy-J3-Star.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj32018/Samsung-Galaxy-J3-2018.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya9starlite/Samsung-Galaxy-A9-Star-Lite.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya9star/Samsung-Galaxy-A9-Star.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxywide2/Samsung-Galaxy-Wide-2.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxywide3/Samsung-Galaxy-Wide-3.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxya6plusdualsim/Samsung-Galaxy-A6plus-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj6dualsim/Samsung-Galaxy-J6-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj4dualsim/Samsung-Galaxy-J4-Dual-SIM.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj4/Samsung-Galaxy-J4.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyslightluxury/Samsung-Galaxy-S-Light-Luxury.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj6/Samsung-Galaxy-J6.html
+Page: https://www.mgsm.pl/pl/katalog/samsung/models/40/
+Phone Url https://www.mgsm.pl/pl/katalog/samsung/galaxyj8/Samsung-Galaxy-J8.html
